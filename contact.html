@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrez_vous</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        section#comment-form {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="date"],
+        button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+   
+    <link rel="stylesheet" href="styles.css">
+ 
+</head>
+<body> 
+    <section id="comment-form">
+        <h1>Enregistrez_vous</h1>
+        <form action="" method="POST">
+            <div class="form-control">
+                <label for="name">
+                    Nom: 
+                    <input type="text" name="Nom" id="name" require autofocus  pattern="[A-Za-zÀ-ÿ\s]{3,22}">
+                </label>
+            </div>
+            <div class="form-control">
+                <label for="pname">
+                Prenom: 
+                    <input type="text" name="Prenom" id="pname" require autofocus  pattern="[A-Za-zÀ-ÿ\s]{3,22}">
+                </label>
+            </div>
+            <div class="form-control">
+                <label for="mail">
+                email: 
+                    <input type="text" name="mail" id="mail" require>
+                </label>
+            </div>
+            <div class="form-control">
+                <label for="name">
+                Sujet:
+                    <input type="text" name="Sujet" id="Suject" require  pattern="[A-Za-zÀ-ÿ\s]{2,25}">
+                </label>
+            </div>
+
+            <div class="form-control">
+                <label for="sms">
+                Message:
+                    <input type="text" name="Message" id="sms" require  pattern="[A-Za-zÀ-ÿ\s]{1,1000}">
+                </label>
+            </div>
+            <div class="form-control">
+                <label for="Date">
+                Date_envoi:
+                    <input type="date" name="Date_envoi" id="date" require>
+                </label>
+            </div>
+                <button type="submit" name="envoyer">Envoyer</button>
+            </fieldset>
+            
+        </form>
+   
+    </section>
+</body>
+</html>
