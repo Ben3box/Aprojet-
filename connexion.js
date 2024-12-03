@@ -1,34 +1,37 @@
- // Import the functions you need from the SDKs you need
- import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
- import { getDatabase,ref,set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
- // TODO: Add SDKs for Firebase products that you want to use
- // https://firebase.google.com/docs/web/setup#available-libraries
+  import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
- // Your web app's Firebase configuration
- const firebaseConfig = {
-   apiKey: "AIzaSyC7G6AFEblsR0AnidMvL3yqgjtTnWzQSTU",
-   authDomain: "uijuuh-cb30e.firebaseapp.com",
-   projectId: "uijuuh-cb30e",
-   storageBucket: "uijuuh-cb30e.firebasestorage.app",
-   messagingSenderId: "191683631926",
-   appId: "1:191683631926:web:d6e69e3d33360915227197"
- };
+document.getElementById('id').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Empêche le rechargement de la page
 
- // Initialize Firebase
- const app = initializeApp(firebaseConfig);
- const db = getDatabase(app);
- //ajout du gestionnaire d'evenement
-document:getElementById("submit").addeventlistener('click',function(e) {
-    e.preventDefault();//empecher          le rechargement de la page
-    console.log('click detecte');
-    set(ref(db,'contact/'+ document.getElementByID("name").Value),{
-        nom:document.getElementById("name").Value,
-        Prenom:document.getElementById("pname").Value, 
-        email:document.getElementById("mail").Value, 
-        Sujet:document.getElementById("subject").Value,
-        Message:document.getElementById("sms").Value,
-         Date_envoi:document.getElementById("date").Value
-    });
-    alert("Reussie");
+    // Récupérer les valeurs du formulaire
+    const name = document.getElementById('name').value;
+    const pname = document.getElementById('pname').value;
+    const email = document.getElementById('mail').value;
+    const Sujet = document.getElementById('suject').value;
+    const Message = document.getElementById('sms').value;
+    
+    console.log("nom:", name, "Prenom:", pname,"email", email,"Sujet", Sujet, "Message:", Message);
+    try {
+        // Ajouter un document à la collection "contacts"
+        const docRef = await addDoc(collection(window.db, "id"), {
+            Nom: name,
+            Prenom: pname,
+            email: email,
+            sujet: Sujet,       
+            message: Message,
+           // timestamp: new Date() // Ajoute un horodatage
+        });
+        console.log("Message écrit avec ID: ", docRef.id);
+
+        alert("Message envoyé avec succès !");
+    } catch (e) {
+        console.error("Erreur lors de l'ajout du message: ", e);
+        alert("Une erreur s'est produite lors de l'envoi de votre message : " + e.message);
+    }
+
+
+
+    // Réinitialiser le formulaire
+    document.getElementById('id').reset();
  })
  
