@@ -148,6 +148,17 @@ document.getElementById('smsForm').addEventListener('submit', async function (e)
 
     const to = document.getElementById('to').value;
     const message = document.getElementById('message').value; 
+    const accountSid = "ACbb37512ac8c20995e26aa3b090b5f592"; 
+// const authToken = "b60f80cc0512efacd6274b0920d18df5"; 
+// const twilioPhoneNumber = "+17752888834";
+
+// const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
+
+// // Création de l'objet FormData
+// const formData = new FormData();
+// formData.append('To', to);
+// formData.append('From', twilioPhoneNumber);
+// formData.append('Body', message);
     try {
         const response = await fetch(url, {
             method: 'POST',
